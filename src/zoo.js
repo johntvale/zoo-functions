@@ -3,9 +3,8 @@ const data = require('./data');
 
 function getSpeciesByIds(...ids) {
   // seu código aqui
-  const filteredSpecie = species.filter((eachSpecie) => ids.some((eachId) => eachSpecie.id === eachId));
-  return filteredSpecie;
-};
+  return species.filter((eachSpecie) => ids.some((eachId) => eachSpecie.id === eachId));
+}
 
 function getAnimalsOlderThan(animal, age) {
   // seu código aqui
