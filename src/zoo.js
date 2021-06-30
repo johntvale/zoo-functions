@@ -1,11 +1,15 @@
+const { species } = require('./data');
 const data = require('./data');
 
-function getSpeciesByIds(ids) {
+function getSpeciesByIds(...ids) {
   // seu código aqui
-}
+  const filteredSpecie = species.filter((eachSpecie) => ids.some((eachId) => eachSpecie.id === eachId));
+  return filteredSpecie;
+};
 
 function getAnimalsOlderThan(animal, age) {
   // seu código aqui
+
 }
 
 function getEmployeeByName(employeeName) {
@@ -24,7 +28,7 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
 
-function countAnimals(species) {
+function countAnimals(allSpecies) { // alterei 'species' por 'allSpecies' para corrigir o lint
   // seu código aqui
 }
 
