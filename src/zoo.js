@@ -7,7 +7,9 @@ function getSpeciesByIds(...ids) {
 
   if (ids.length !== 0) {
     ids.forEach((eachId) => {
-      resultArray.push(species.find((eachSpecie) => eachSpecie.id === eachId));
+      resultArray
+        .push(species
+          .find((eachSpecie) => eachSpecie.id === eachId));
     });
     return resultArray;
   }
@@ -16,7 +18,12 @@ function getSpeciesByIds(...ids) {
 
 function getAnimalsOlderThan(animal, age) {
   // seu código aqui
-
+  const foundSpecies = species
+    .find((eachSpecie) => eachSpecie.name === animal);
+  if (foundSpecies.residents.every((foundSpecie) => foundSpecie.age >= age)) {
+    return true;
+  }
+  return false;
 }
 
 function getEmployeeByName(employeeName) {
