@@ -102,7 +102,7 @@ function calculateLength2(entrants, arrPricesOrdered) { // Teste 2 Requisito 8
   return calculatedEntry4;
 }
 
-function calculateLength3(entrants, arrPricesOrdered) {
+function calculateLength3(entrants, arrPricesOrdered) { // Teste 3 Requisito 8
   const recValues = Object.values(entrants);
   const calculatedEntry5 = recValues
     .map((recValue, index) => recValue * arrPricesOrdered[index] * 100)
@@ -118,35 +118,42 @@ function calculateEntry(entrants) {
 
   const arrPricesOrdered = [Adult, Child, Senior];
 
-  if (Object.values(entrants).length === 1) {
-    return calculateLength1(entrants);
-  }
+  if (Object.values(entrants).length === 1) return calculateLength1(entrants);
 
-  if (Object.values(entrants).length === 2) {
-    return calculateLength2(entrants, arrPricesOrdered);
-  }
+  if (Object.values(entrants).length === 2) return calculateLength2(entrants, arrPricesOrdered);
 
   return calculateLength3(entrants, arrPricesOrdered);
 }
 
 function getAnimalMap(options) {
-  // seu código aqui
+  // Requisito 9
 }
 
 function getSchedule(dayName) {
-  // seu código aqui
+  // Requisito 10
 }
 
 function getOldestFromFirstSpecies(id) {
-  // seu código aqui
+  // Requisito 11
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  // Requisito 12
+  /* Recebi ajuda dos amigos da turma: Recuperar o objeto como "array de arrays" e depois
+  criar um novo objeto para substituir o anterior(objeto original), facilita a interpretação */
+  const replacePrices = {};
+  Object.entries(data.prices)
+    .forEach((eachPrice) => {
+      const keyPrice = eachPrice[0];
+      const valuePrice = eachPrice[1];
+      const actualPrice = (valuePrice * percentage) / 100;
+      replacePrices[keyPrice] = Math.round((valuePrice + actualPrice) * 100) / 100;
+    });
+  data.prices = replacePrices;
 }
 
 function getEmployeeCoverage(idOrName) {
-  // seu código aqui
+  // Requisito 13
 }
 
 module.exports = {
