@@ -135,6 +135,23 @@ function getSchedule(dayName) {
 
 function getOldestFromFirstSpecies(id) {
   // Requisito 11
+  const firstSpecieID = employees.filter((employee) => employee.id === id)[0].responsibleFor[0];
+  const specieData = species.filter((specie) => specie.id === firstSpecieID)[0].residents;
+
+  let higherAge = specieData[0].age;
+  let indexOfHigherAge;
+
+  specieData.forEach((specie, index) => {
+    const actual = specie.age;
+    if (actual > higherAge) {
+      higherAge = actual;
+      indexOfHigherAge = index;
+    }
+  });
+
+  return [specieData[indexOfHigherAge].name,
+    specieData[indexOfHigherAge].sex,
+    specieData[indexOfHigherAge].age];
 }
 
 function increasePrices(percentage) {
