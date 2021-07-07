@@ -126,7 +126,7 @@ function calculateEntry(entrants) {
 }
 
 function getAnimalMap(options) {
-  // Requisito 9
+  // Requisito 09
 }
 
 function scheduleBuilder1(daysNames, weekSchedule) { // Teste 1 Requisito 10
