@@ -129,8 +129,54 @@ function getAnimalMap(options) {
   // Requisito 9
 }
 
+function scheduleBuilder1(daysNames, weekSchedule) { // Teste 1 Requisito 10
+  const obj = {}; // objeto que será retornado.
+  const dN = daysNames; // renomear para reduzir numero de caracteres;
+  const wS = weekSchedule; // renomear para reduzir numero de caracteres;
+  dN.forEach((day, index) => {
+    if (wS[index].open < 1) obj[day] = 'CLOSED';
+    if (wS[index].close > 12) {
+      const lessThen12 = wS[index].close - 12;
+      obj[day] = `Open from ${wS[index].open}am until ${lessThen12}pm`;
+    }
+    if (wS[index].open > 0 && wS[index].close < 12) {
+      obj[day] = `Open from ${wS[index].open}am until ${wS[index].close}pm`;
+    }
+  });
+  return obj;
+}
+
+function scheduleBuilder2(daysNames, weekSchedule, foundIndexOfDayName) { // Teste 2 Requisito 10
+  const obj = {}; // objeto que será retornado.
+  const dN = daysNames; // renomear para reduzir numero de caracteres;
+  const wS = weekSchedule; // renomear para reduzir numero de caracteres;
+  const fIODN = foundIndexOfDayName; // renomear para reduzir numero de caracteres;
+
+  if (wS[fIODN].open < 1) obj[dN[fIODN]] = 'CLOSED';
+  if (wS[fIODN].close > 12) {
+    const lessThen12 = wS[fIODN].close - 12;
+    obj[dN[fIODN]] = `Open from ${wS[fIODN].open}am until ${lessThen12}pm`;
+  }
+  if (wS[fIODN].open > 0 && wS[fIODN].close < 12) {
+    obj[dN[fIODN]] = `Open from ${wS[fIODN].open}am until ${wS[fIODN].close}pm`;
+  }
+  return obj;
+}
+
 function getSchedule(dayName) {
+  const daysNames = Object.keys(data.hours);
+  const weekSchedule = Object.values(data.hours);
+  let foundIndexOfDayName;
   // Requisito 10
+  if (!dayName) return scheduleBuilder1(daysNames, weekSchedule);
+
+  daysNames.forEach((day, index) => {
+    if (dayName === day) {
+      foundIndexOfDayName = index;
+    }
+  });
+
+  return scheduleBuilder2(daysNames, weekSchedule, foundIndexOfDayName);
 }
 
 function getOldestFromFirstSpecies(id) {
