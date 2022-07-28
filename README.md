@@ -16,4 +16,3 @@
 
 ### Tecnologias utilizadas
 - JavaScript ES6
-- Jest
